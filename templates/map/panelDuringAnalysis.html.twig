@@ -1,0 +1,26 @@
+{% block body %}
+    <div id="panelDuringAnalysis" class="overlay">
+        <div class="overlay-content">
+            <div class="overlay-content">
+                <div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+
+                    <div class="row shadow-sm panel-row">
+                        <div class="col panel-col">
+                            <div class="textDuringAnalysis text-center">
+                                В данный момент происходит процесс анализа.
+                                <br>
+                                Подождите его завершения.
+                                <div class="spin-wrapper">
+                                    <div class="spinner">
+                                    </div>
+                                </div>
+                                <div style="text-align: center" id="faviconLoading"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

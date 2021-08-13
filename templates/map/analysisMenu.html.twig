@@ -1,0 +1,29 @@
+{% block body %}
+    <div id="analysisMenu" class="overlay">
+        <a id="closeAnalysisMenu" href="javascript:void(0)" class="closebtn">&times;</a>
+
+        <div class="overlay-content">
+            <div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+
+                <div class="row shadow-sm panel-row">
+
+                    <form id="propertiesFormAnalysis" onsubmit="return false;">
+                        <div class="col panel-col">
+                            <div class="form-group">
+                                <label class="labelFormProperties" for="budgetAnalysis">Бюджет: </label>
+                                <input class="form-control" required placeholder="Бюджет" id="budgetAnalysis" type="text">
+                                <small class="form-text text-muted">Максимальное количество средств на покупку фонарей</small>
+                            </div>
+                            <div class="form-group">
+                                <button id="applyAnalysisMenu" class="btn btn-light">Применить</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

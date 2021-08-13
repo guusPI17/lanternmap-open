@@ -1,0 +1,22 @@
+{% block body %}
+    {{ form_start(formMap) }}
+
+    {% for flashError in errorsMap %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="select">
+            {{ form_widget(formMap.locality) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_widget(formMap.name, {'attr': {'class': 'myInput', 'placeholder': 'Название карты'}}) }}
+    </div>
+    <div class="form-group">
+        <button class="btn link-button w-100" type="submit">
+            Создать карту
+        </button>
+    </div>
+    {{ form_end(formMap) }}
+{% endblock %}

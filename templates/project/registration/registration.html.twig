@@ -1,0 +1,66 @@
+{% extends 'project/base.html.twig' %}
+    {% block title %}Регистрация / LanternMap{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% block body %}
+    <div class="container-sm d-flex h-100 justify-content-center align-items-center p-0">
+
+        <div class="row shadow-sm border border-dark panel-row">
+
+            <div class="col panel-col">
+                <h3 class="text-center titlePanel">Регистрация</h3>
+                <div class="div registrationSite namePage">
+                    на Lantern<b>M</b>ap.ru
+                </div>
+
+                {{ form_start(registrationForm) }}
+
+                {% for flashError in errors %}
+                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                {% endfor %}
+
+
+
+                <div class="form-group mb-4 text-center">
+                    {{ form_widget(registrationForm.name, {'attr': {'class': 'myInput', 'placeholder': 'Логин'}}) }}
+                </div>
+
+
+                <div class="form-group mb-4 text-center">
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'myInput', 'placeholder': 'Почта'}}) }}
+                </div>
+
+                <div class="form-group mb-4 text-center">
+                    {{ form_widget(registrationForm.password, {'attr': {'class': 'myInput', 'placeholder': 'Пароль'}}) }}
+                </div>
+
+
+                {#<div class="form-group mb-4">
+                    <input type="text" placeholder="Повторный пароль" class="myInput">
+                </div>#}
+
+                {#<div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkLicense">
+                        <label class="custom-control-label myCheck" for="checkLicense">
+                            Я согласен с <a class="linkLicense" href="License.txt"
+                                            target="_blank">лицензионным <br> соглашением</a>
+                        </label>
+                    </div>
+                </div>#}
+                <div class="form-group mt-5">
+                    <button type="submit" class="btn link-button w-100">Зарегистрироваться</button>
+                </div>
+                <div class="form-group mt-4">
+                    <a class="btn link-button w-100" href="{{ path('app_authorization') }}">Авторизация</a>
+                </div>
+                {{ form_end(registrationForm) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

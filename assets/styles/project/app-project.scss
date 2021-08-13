@@ -1,0 +1,30 @@
+// стили иконок
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css");
+
+// стили bootstrap
+@import "global.scss";
+
+// стилия для проекта
+@import "authorization.scss";
+@import "registration.scss";
+@import "menu.scss";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #212020;
+}
+
+.link-button{
+  background-color: #939393;
+  border-radius: 15px;
+}
+
+.link-button a:hover{
+  color: #a5cdf7;
+  text-decoration: none;
+}

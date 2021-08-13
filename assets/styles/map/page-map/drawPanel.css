@@ -1,0 +1,27 @@
+.panelDraw {
+    display: table;
+}
+
+.panelDraw  .groupDraw{
+    display: table-cell;
+    padding: 10px 5px 0px 5px;
+}
+
+.panelDraw  .groupDraw i {
+    color: white;
+}
+
+.panelDraw  .groupDraw i:hover {
+    font-size: 25px;
+    color: #16c7ff;
+    text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
+    margin-top: -5px;
+    display: inline-block;
+    animation: swing ease-in-out 0.5s 1 alternate;
+}
+
+.panelDraw .groupDraw .selectDrawI{
+    font-size: 25px !important;
+    color: #16c7ff !important;
+}
+

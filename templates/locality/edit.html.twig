@@ -1,0 +1,25 @@
+{% block body %}
+    <div class="fileUploadDiv">
+        <span style="color:white">Загрузка данных передвижения:</span>
+        {{ form_start(formLocality) }}
+
+        {% for flashError in errorsLocality %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="select">
+                {{ form_widget(formLocality.editLocality) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_widget(formLocality.fileDataMovement, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            <button class="btn link-button w-100" type="submit">
+                Загрузить файл
+            </button>
+        </div>
+        {{ form_end(formLocality) }}
+    </div>
+{% endblock %}

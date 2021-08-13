@@ -1,0 +1,95 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    uploads_directory: '%kernel.project_dir%/public/uploads'
+    data_movement_directory: '%kernel.project_dir%/public/uploads/dataMovement'
+    geo_json_generation_directory: '%kernel.project_dir%/public/geoJsonGeneration'
+    report_directory: '%kernel.project_dir%/public/uploads/reports'
+    saving_file_format: 'json'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Service\CalculationCoordinatesLights:
+        public: true
+        autowire: true
+
+    App\Service\CalculationStreetLights:
+        public: true
+        autowire: true
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\AnalysisReport:
+        public: true
+        autowire: true
+        arguments: ['@doctrine.orm.entity_manager']
+
+    App\Service\CalculationStreetsByParameters:
+        public: true
+        autowire: true
+
+    App\Service\DeterminationOffsetPeoples:
+        public: true
+        autowire: true
+        arguments: ['@App\Service\CalculationGeometryWithLines']
+
+    App\Service\CalculationGeometryWithLines:
+        public: true
+        autowire: true
+
+    App\Service\StreetRatingCalculation:
+        public: true
+        autowire: true
+        arguments: ['@App\Service\CalculationGeometryWithLines', '@doctrine.orm.entity_manager']
+
+    App\Service\CleaningData:
+        public: true
+        autowire: true
+        arguments: ['@App\Service\CalculationGeometryWithLines']
+
+    App\Service\DataAveraging:
+        public: true
+        autowire: true
+
+    App\Service\SavingFile:
+        public: true
+        autowire: true
+        arguments: ['%saving_file_format%']
+
+    App\Service\GenerationDataMovement:
+        public: true
+        autowire: true
+
+    App\Service\GenerationLanternOnMap:
+        public: true
+        autowire: true
+        arguments: ['@App\Service\CalculationCoordinatesLights']
+
+    App\Doctrine\EventListener\FixPostgreSQLDefaultSchemaListener:
+        tags:
+            - { name: doctrine.event_listener, event: postGenerateSchema }

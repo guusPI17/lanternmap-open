@@ -1,0 +1,22 @@
+{% block body %}
+    <div class="fileUploadDiv">
+        <span style="color:white">Генерация тестовых даных передвижения:</span>
+        {{ form_start(formLocalityGeneration) }}
+
+        {% for flashError in errorsLocality %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="select">
+                {{ form_widget(formLocalityGeneration.editLocality) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn link-button w-100" type="submit">
+                Сгенерировать
+            </button>
+        </div>
+        {{ form_end(formLocalityGeneration) }}
+    </div>
+{% endblock %}

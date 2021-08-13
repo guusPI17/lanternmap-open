@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
+.btn:hover{
+  background: #ededed;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-color: #4c4c4c;
+  border: 1px solid;
+  border-radius: 5px;
+}

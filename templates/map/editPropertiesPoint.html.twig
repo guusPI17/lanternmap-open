@@ -1,0 +1,39 @@
+{% block body %}
+    <div id="updatePropertiesFeaturePoint" class="overlay">
+        <a id="closeUpdatePropFeaturePoint" href="javascript:void(0)" class="closebtn">&times;</a>
+
+        <div class="overlay-content">
+            <div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+
+                <div class="row shadow-sm panel-row">
+
+                    <form id="propertiesFormPoint" onsubmit="return false;">
+                        <div class="col panel-col">
+                            <div class="form-group">
+                                <label class="labelFormProperties" for="propertiesNameFeaturePoint">Название: </label>
+                                <input class="form-control" required placeholder="Название фонаря" id="propertiesNameFeaturePoint" type="text">
+                                <small class="form-text text-muted">Название фонаря</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="labelFormProperties" for="propertiesPriceFeaturePoint">Цена: </label>
+                                <input class="form-control" required placeholder="Стоимость фонаря" id="propertiesPriceFeaturePoint" type="text">
+                                <small class="form-text text-muted">Стоимость фонаря</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="labelFormProperties" for="propertiesHeightFeaturePoint">Высота: </label>
+                                <input class="form-control" required placeholder="Высота установки" id="propertiesHeightFeaturePoint" type="text">
+                                <small class="form-text text-muted">Высота установки в метрах</small>
+                            </div>
+                            <div class="form-group">
+                                <button id="applyChangesPoint" class="btn btn-light">Применить</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

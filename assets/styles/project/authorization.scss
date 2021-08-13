@@ -1,0 +1,37 @@
+.panel-row{
+    background-color: #31353d;
+    border-radius: 15px;
+}
+
+.myButton{
+    background-color: #939393;
+    border-radius: 15px;
+}
+.panel-col{
+    padding: 40px 50px 15px 50px;
+}
+
+.titlePanel{
+    color: #DAD3D3;
+    margin: 0;
+}
+
+.namePage{
+    color: #AAA9A9;
+}
+
+.authorizationSite{
+    //padding-right: 16px;
+    text-align: center;
+}
+
+.myInput {
+    border: none;
+    border-bottom: 1px solid #7D7D7D;
+    background-color: transparent;
+    color: #979797;
+    outline: none;
+    width:100%;
+
+    padding: 10px 10px 5px 10px;
+}

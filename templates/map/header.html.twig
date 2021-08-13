@@ -1,0 +1,46 @@
+{% block body %}
+    <div class="page-content-header">
+        <nav class="navbar navbar-expand-sm justify-content-left navbar-main-map">
+            <!-- Brand -->
+
+            <!-- Links -->
+            <ul class="navbar-nav header-ul-li">
+                <li class="nav-item">
+                    <div class="panelDraw" id="typeDraw">
+                        <a class="groupDraw" id="noneDraw" data-type-draw="None"><i id="noneDrawI"
+                                    class="fa fa-mouse-pointer fa-lg selectDrawI"
+                                    aria-hidden="true"></i></a>
+                        <a class="groupDraw" data-type-draw="Point"><i class="fa fa-circle fa-lg"
+                                                                       aria-hidden="true"></i></a>
+{#                        <a class="groupDraw" data-type-draw="Polygon"><i class="fa fa-square fa-lg"#}
+{#                                                                         aria-hidden="true"></i></a>#}
+                        <a class="groupDraw" data-type-draw="LineString"><i class="fa fa-pencil fa-lg"
+                                                                            aria-hidden="true"></i></a>
+                    </div>
+                    <small class="form-text text-muted">Элементы рисования</small>
+                </li>
+                <li class="nav-item text-center">
+                    <button id="analysisOpen" class="btn btn-secondary">Анализ</button>
+                    <small class="form-text text-muted">Запуск анализа карты</small>
+                </li>
+                <li class="nav-item text-center">
+                    <a id="downloadReport" class="btn btn-secondary" style="color:white"
+                       href="{{ path('map_downloadReport', {'id': map.id}) }}">Скачать отчет</a>
+                    <small class="form-text text-muted">Отчет по анализу</small>
+                </li>
+                <li class="nav-item text-center">
+                    <button id="downloadFeatures" class="btn btn-secondary">Скачать карту</button>
+                    <small class="form-text text-muted">Формат GeoJson</small>
+                </li>
+                <li class="nav-item text-center">
+                    <button id="cleaFeatures" class="btn btn-danger">
+                        Очистить
+                    </button>
+                    <small class="form-text text-muted">Очистка от всех элементов</small>
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+{% endblock %}

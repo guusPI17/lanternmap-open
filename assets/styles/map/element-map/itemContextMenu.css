@@ -1,0 +1,9 @@
+.active-item {
+    color: black;
+}
+
+.not-active-item {
+    color: grey;
+    pointer-events: none;
+}
+

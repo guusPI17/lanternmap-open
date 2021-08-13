@@ -1,0 +1,94 @@
+{% extends 'project/base.html.twig' %}
+    {% block title %}Меню / LanternMap{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+{% block body %}
+    <div class="d-flex flex-wrap h-100 justify-content-center align-items-center p-0">
+        <div class="container p-5 panel-row ">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success text-center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger text-center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="row row-menu">
+
+                <div class="one-element col-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col user-pic">
+                                <img class="img-responsive img-rounded"
+                                     src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                                     alt="User picture">
+                            </div>
+                            <div class="col user-info">
+                                <span class="user-name text-break">{{ user.name }}</span>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <span class="user-role">Администратор</span>
+                                {% else %}
+                                    <span class="user-role">Пользователь</span>
+                                {% endif %}
+                                    <div class="row">
+                                        <div class="col-7">
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                <a class="btn link-button" href={{ path('admin') }}>Админка</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-5">
+                                            <a class="btn link-button" href={{ path('app_logout') }}>Выход</a>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one-element panelMenuNameSite col-8">
+                    <h3 class="text-center titlePanelMenu">Основное меню</h3>
+                    <div class="div menuPage namePage">
+                        на Lantern<b>M</b>ap.ru
+                    </div>
+                </div>
+            </div>
+            <div class="row line row-menu"></div>
+            <div class="row row-menu lastBlock">
+
+                <div class="one-element col">
+                    <h3 class="text-center titleFunctions">Созданные карты</h3>
+                    {% if maps %}
+                        {{ include('map/index.html.twig') }}
+                    {% else %}
+                        <div class="text-center" style="  height: 250px;">
+                            <span class="infoText">У вас отсутствуют карты</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="one-element col">
+                    <h3 class="text-center titleFunctions">Создание новой карты</h3>
+                    {{ include('map/new.html.twig') }}
+                </div>
+                <div class="one-element col">
+                    <h3 class="text-center titleFunctions">Возможности</h3>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="scrollMaps">
+                            {{ include('locality/edit.html.twig') }}
+                            {{ include('locality/editGeneration.html.twig') }}
+                            {{ include('project/menu/_formUploadLantern.html.twig') }}
+                        </div>
+                    {% else %}
+                        <div class="text-center" style="  height: 250px;">
+                            <span class="infoText">У вас отсутствуют дополнительные возможности</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

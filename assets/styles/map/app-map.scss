@@ -1,0 +1,22 @@
+// стили иконок
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css");
+
+// стили для элемента карты
+@import "element-map/infoTooltip.css";
+@import "element-map/itemContextMenu.css";
+
+// стили контекстного меню
+@import "~ol-contextmenu/dist/ol-contextmenu";
+
+// стили bootstrap
+@import "global.scss";
+
+// стили для страницы по работе с картой
+@import "page-map/menuPropertiesFeature.css";
+@import "page-map/main.css";
+@import "page-map/footer.css";
+@import "page-map/fullscreen.css";
+@import "page-map/drawPanel.css";
+@import "page-map/faviconLoadin.css";

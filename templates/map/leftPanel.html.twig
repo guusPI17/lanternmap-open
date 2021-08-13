@@ -1,0 +1,86 @@
+{% block body %}
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand">
+                <a href="#">панель</a>
+                <div id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    <img class="img-responsive img-rounded"
+                         src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                         alt="User picture">
+                </div>
+                <div class="user-info">
+                      <span class="user-name">{{ user.name }}
+                      </span>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <span class="user-role">Администратор</span>
+                    {% else %}
+                        <span class="user-role">Пользователь</span>
+                    {% endif %}
+                    <span class="user-role">{{ map.name }}</span>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+
+                <a title="Выводит последнее уведомление" href="#" type="button" data-toggle="modal" data-target="#modalNotification">
+                    <i class="fa fa-envelope"></i>
+                </a>
+                <a title="Выход с карты" href="{{ path('menu_show') }}">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>Фактуры</span>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="#">
+                            <i class="fa fa-book"></i>
+                            <span>Выделенные</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul id="listFeaturesSelect">
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        Отсутствуют
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="#">
+                            <i class="fa fa-book"></i>
+                            <span>Все</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul id="listFeaturesAdd">
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        Отсутствуют
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+{#                    <li class="header-menu">#}
+{#                        <span>Второй</span>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">#}
+{#                            <i class="fa fa-book"></i>#}
+{#                            <span>документы</span>#}
+{#                        </a>#}
+{#                    </li>#}
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+    </nav>
+{% endblock %}

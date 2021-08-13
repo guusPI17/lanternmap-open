@@ -1,0 +1,7 @@
+<form class="deleteFormMap" id="deleteFormMap{{ map.id }}" method="post" action="{{ path('map_delete', {'id': map.id}) }}">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ map.id) }}">
+    <a class="linkDeleteMap" href="#" onclick="return confirm('Вы действительно хотите удалить данную карту?') ? document.getElementById('deleteFormMap{{ map.id }}').submit(): false;">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </a>
+</form>

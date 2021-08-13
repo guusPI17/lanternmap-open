@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+    {% block title %}{{ map.name }} / LanternMap{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('app-map') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('app-map') }}
+    {% endblock %}
+{% block body %}
+    <!--Начало модального окна уведомления-->
+    {{ include('map/modalNotification.html.twig') }}
+    <!--Конец модального окна уведомления-->
+
+    <div data-id-map="{{ map.id }}" class="main-body">
+        <!--Начало элементов которые входят в полноэкранный режим-->
+        <div id="fullscreen" class="fullscreen">
+
+            <!--Начало элементов связанных с левой панелью-->
+            <div class="page-wrapper chiller-theme toggled">
+
+                <!--Начало header-->
+                <header>
+                    {% block header %}
+                        {{ include('map/header.html.twig') }}
+                    {% endblock %}
+                </header>
+                <!--Конец header-->
+
+                <!--Начало кнопки закрытия левой панели-->
+                <a id="show-sidebar" class="btn btn-sm btn-secondary" href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <!--Конец кнопки закрытия левой панели-->
+
+                <!--Начало левой панели-->
+                {{ include('map/leftPanel.html.twig') }}
+                <!--Конец левой панели-->
+
+                <!--Начало map-->
+                <div class="page-content-map" id="map">
+                    <div id="tooltipFeature"></div>
+                </div>
+                <!--Конец map-->
+
+                <!--Конец ползунка и вывода текста-->
+                <div class="page-content">
+                    <input class="swap-map" id="swipeMap" value="100" type="range" style="width: 100%;">
+                </div>
+                <!--Конец ползунка и вывода текста-->
+
+            </div>
+            <!--Конец элементов связанных с левой панелью-->
+
+            <!--Начало панели редактирования свойств для линии-->
+            {{ include('map/editPropertiesLineString.html.twig') }}
+            <!--Конец панели редактирования свойств для линии-->
+
+            <!--Начало панели редактирования свойств для точки-->
+            {{ include('map/editPropertiesPoint.html.twig') }}
+            <!--Конец панели редактирования свойств для точки-->
+
+            <!--Начало панели анализа-->
+            {{ include('map/analysisMenu.html.twig') }}
+            <!--Конец панели анализа-->
+
+            <!--Начало панели во время анализа-->
+            {{ include('map/panelDuringAnalysis.html.twig') }}
+            <!--Конец панели во время анализа-->
+
+        </div>
+        <!--Конец элемент которые входя в полноэкранный режим-->
+
+        <!--Начало footer-->
+        <footer>
+            {% block footer %}
+                {{ include('map/footer.html.twig') }}
+            {% endblock %}
+        </footer>
+        <!--Конец footer-->
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block body %}
+    <div class="fileUploadDiv">
+        <span style="color:white">Загрузка фонарей:</span>
+        {{ form_start(formLanternFile) }}
+
+        {% for flashError in errorsLanternFile %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        <div class="form-group">
+            {{ form_widget(formLanternFile.lanternFile, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            <button class="btn link-button w-100" type="submit">
+                Загрузить файл
+            </button>
+        </div>
+        {{ form_end(formLanternFile) }}
+    </div>
+{% endblock %}

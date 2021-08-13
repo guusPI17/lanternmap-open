@@ -1,0 +1,74 @@
+/* Наложение (фон) */
+.overlay {
+    /* Высота и ширина зависят от того, как вы хотите показать наложение*/
+    height: 100%;
+    width: 0;
+    position: fixed; /* Оставаться на месте */
+    z-index: 1; /* Сидеть на вершине */
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0); /* Черный резервный цвет */
+    background-color: rgba(0, 0, 0, 0.9); /*Черный с непрозрачностью */
+    overflow-x: hidden; /* Отключить горизонтальную прокрутку */
+    transition: 0.5s; /* 0.5 секунды эффект перехода, чтобы скользить в или скользить вниз по наложению (высота или ширина, в зависимости от показа) */
+}
+
+/* Расположите содержимое внутри наложения */
+.overlay-content {
+    position: relative;
+    top: 5%; /* 5% сверху */
+    width: 100%; /* 100% ширина */
+    text-align: center; /* Центрированный текст/ссылки */
+    margin-top: 30px; /* 30px верхнее поле, чтобы избежать конфликта с кнопкой закрытия на небольших экранах */
+}
+
+/* Навигационные ссылки внутри наложения */
+.overlay .closebtn {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Блок дисплея вместо встроенного */
+    transition: 0.3s; /* Эффекты перехода при наведении (цвет) */
+}
+
+/* При наведении курсора мыши на навигационные ссылки измените их цвет */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+/* Расположите кнопку закрыть (верхний правый угол) */
+.overlay .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* Если высота экрана меньше 450 пикселей, измените размер шрифта ссылок и снова установите кнопку закрыть, чтобы они не перекрывались */
+@media screen and (max-height: 450px) {
+    .overlay .closebtn {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 30px;
+        top: 10px;
+        right: 35px;
+    }
+}
+
+.labelFormProperties {
+    color: white;
+    font-size: 20px;
+}
+
+.helpTextForm {
+    color: gray;
+    text-decoration: underline;
+}
+
+.textDuringAnalysis {
+    color: white;
+    font-size: 32px;
+}
